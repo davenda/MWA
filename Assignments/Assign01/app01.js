@@ -1,2 +1,3 @@
-const fib = require("./fibonacci.js");
-console.log(fib.fib(7));
+const imported = require("./fibonacci.js");
+console.log(imported.fib(30));
+console.log(imported.fib(-15));

@@ -1,0 +1,15 @@
+{
+  "name": "listener_app",
+  "version": "1.0.0",
+  "description": "An express server that listens to port 5353",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dawit Diriba",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

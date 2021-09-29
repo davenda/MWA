@@ -1,0 +1,18 @@
+{
+  "name": "app09",
+  "version": "1.0.0",
+  "description": "This is my first npm program",
+  "main": "app09.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node",
+    "npm"
+  ],
+  "author": "Dawit",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

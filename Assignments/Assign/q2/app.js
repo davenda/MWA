@@ -9,6 +9,7 @@ app.use(function(req, res, next){
     console.log("Recieved request");
     next();
 })
+app.use(express.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 

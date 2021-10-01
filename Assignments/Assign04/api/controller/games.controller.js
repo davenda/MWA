@@ -56,7 +56,7 @@ const getAll = function(req, res){
     let count = 5;
 
     collection.find().toArray(function(err, games){
-        console.log('Found games', games);
+        // console.log('Found games', games);
         if(err){
             res.status(500).json({
                 error: err
@@ -64,6 +64,25 @@ const getAll = function(req, res){
         }
         else{
             res.status(201).json(games);
+        }
+    });
+}
+const getSpecificGames = function(req, res){
+    console.log("Get Specific number of games Request");
+    const collection = dbconnection.get().collection('games');
+    let num = 6;
+    if(req.body.num){
+        num = parseInt(req.body.num);
+        if(num > 9){
+            num = 9;
+        }
+    }
+    collection.find().limit(num).toArray(function(err, games){
+        if(err){
+            res.status(200).send('Error Occuerd');
+        }
+        else{
+            res.status(200).json(games);
         }
     });
 }
@@ -77,5 +96,6 @@ const deleteOneGame = function(req, res){
 module.exports = {
     gamesGetOne: getOne,
     gamesGetAll: getAll,
-    gamesAddOne: addOne
+    gamesAddOne: addOne,
+    specificGames: getSpecificGames
 }

@@ -30,7 +30,7 @@ const getGames = function(req, res) {
     });
 }
 
-const getOne = function(req, res) {
+const getOneGame = function(req, res) {
     console.log('Get One game request');
     const gameId = req.params.gameId;
     if(!mongoose.Types.ObjectId.isValid(gameId)){
@@ -86,7 +86,7 @@ const modifyGame = function(req, res){
     Game.findById(gameId).exec(function(err, game){
         if(err){
             console.log('Failed to get a game', err);
-            res.status(200).send('Error Occurred during modifying a game.');
+            res.status(400).send('Error Occurred during modifying a game.');
         }
         else{
             Object.keys(updateData).forEach(function(key){
@@ -154,7 +154,7 @@ const deleteGame = function(req, res){
 
 module.exports = {
     getGames: getGames,
-    getOne: getOne,
+    getOne: getOneGame,
     addGame: addGame,
     modifyGame: modifyGame,
     replaceGame: replaceGame,

@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const publisherSchema = require('./publishers-model');
+const reviewSchema = require('./reviews-model');
 
 const gameSchema = new mongoose.Schema({
     title: {
@@ -19,7 +21,9 @@ const gameSchema = new mongoose.Schema({
     year: Number,
     minPlayer: Number,
     maxPlayer: Number,
-    designers: String
+    designers: String, 
+    publisher: publisherSchema,
+    reviews: [reviewSchema]
 });
 
 mongoose.model('Game', gameSchema, 'games');

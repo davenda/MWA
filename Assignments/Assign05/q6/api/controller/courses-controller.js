@@ -29,9 +29,9 @@ module.exports.getCourses = function(req, res){
 };
 
 module.exports.getOneCourse = function(req, res){
-    console.log('Get Course By ReviewId Request');
+    console.log('Get Course By CourseId Request');
     const studentId = req.params.studentId;
-    const reviewId = req.params.reviewId;
+    const courseId = req.params.courseId;
     console.log(req.params);
 
     if(!mongoose.Types.ObjectId.isValid(studentId)){

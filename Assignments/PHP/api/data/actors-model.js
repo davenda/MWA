@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 module.exports.actorSchema = new mongoose.Schema({
-    'name': {
+    name: {
         type: String,
         required: true
     },

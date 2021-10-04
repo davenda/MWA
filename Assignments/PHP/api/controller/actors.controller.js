@@ -3,13 +3,13 @@ const Movie = mongoose.model('Movie');
 
 module.exports.getActors = function(req, res){
     console.log('Get Actor Request');
-    const gameId = req.params.gameId;
-    if(!mongoose.Types.ObjectId.isValid(gameId)){
+    const actorId = req.params.actorId;
+    if(!mongoose.Types.ObjectId.isValid(actorId)){
         res.status(400)
             .send('Not a valid Movie ID');
         return;
     }
-    Movie.findById(gameId)
+    Movie.findById(actorId)
         .select('actors')
         .exec(function(err, response){
             if(err){
@@ -30,15 +30,14 @@ module.exports.getActors = function(req, res){
 
 module.exports.getOneActor = function(req, res){
     console.log('Get Actor By ActorId Request');
-    const gameId = req.params.gameId;
-    const reviewId = req.params.reviewId;
+    const actorId = req.params.actorId;
     console.log(req.params);
 
-    if(!mongoose.Types.ObjectId.isValid(gameId)){
+    if(!mongoose.Types.ObjectId.isValid(actorId)){
         res.status(400).send('Not a Valid Movie Id');
         return;
     }
-    Movie.find({'_id': gameId, 'actors': {'$elemMatch': {'_id': reviewId}}})
+    Movie.find({'_id': actorId, 'actors': {'$elemMatch': {'_id': actorId}}})
         .select('actors')
         .exec(function(err, response){
             if(err){
@@ -59,17 +58,17 @@ module.exports.getOneActor = function(req, res){
 
 module.exports.addActor = function(req, res){
     console.log('Add Actor Request');
-    const gameId = req.params.gameId;
-    if(!mongoose.Types.ObjectId.isValid(gameId)){
+    const actorId = req.params.actorId;
+    if(!mongoose.Types.ObjectId.isValid(actorId)){
         res.status(400).send('Not a valid Movie ID');
         return;
     }
-    Movie.findById(gameId)
+    Movie.findById(actorId)
         .select('actors')
         .exec(function(err, actor){
             if(err){
                 console.log(err);
-                res.status(500).send('Failed to get a Movie with GameID', gameId);
+                res.status(500).send('Failed to get a Movie with Actor ID', actorId);
             }
             else{
                 console.log(req.query);

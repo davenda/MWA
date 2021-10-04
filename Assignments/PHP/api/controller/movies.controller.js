@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
-const Movies = mongoose.model('Movie');
+const actorSchema = require('../data/actors-model')
 
+const Movie = mongoose.model('Movie');
+const Actor = mongoose.model('Actor', actorSchema);
 module.exports.getAllMovies = function(req, res){
     console.log('Get All Movies Request');
-    let offset = 0;
+    let offset = 5;
     let count = 5;
     if(req.params.offset && req.params.count){
         offset = req.params.offset;
@@ -13,7 +15,7 @@ module.exports.getAllMovies = function(req, res){
             return;
         }
     }
-    Movies.find()
+    Movie.find()
         .skip(offset)
         .limit(count)
         .exec(function(err, movies){
@@ -35,18 +37,18 @@ module.exports.getAllMovies = function(req, res){
 
 module.exports.addMovie = function(req, res){
     console.log('Add Movie POST Request');
-    const movieData = req.query;
-    movieData.actors = [];
+    const movieData = new Movie(req.query);
     
-    if(movieData.name){
-        movieData.actors.push({
-            'name': movieData.name,
-            'age': movieData.age,
-            'country': movieData.country
-        })
+    if(req.query.name){
+        const actorData = {
+            'name': req.query.name,
+            'age': req.query.age,
+            'nationality': req.query.country
+        };
+        movieData.actors.push(new Actor(actorData));
     }
-    console.log(req.query);
-    Movies.create(req.query, function(err, response){
+    console.log(movieData);
+    Movie.create(req.query, function(err, response){
         if(err){
             res.status(500).send(err.message);
             console.log(err);
@@ -59,12 +61,12 @@ module.exports.addMovie = function(req, res){
 
 module.exports.getOneMovie = function(req, res) {
     console.log('Get One movie request');
-    const gameId = req.params.gameId;
-    if(!mongoose.Types.ObjectId.isValid(gameId)){
+    const movieId = req.params.movieId;
+    if(!mongoose.Types.ObjectId.isValid(movieId)){
         res.status(200).send('Not a valid Movie Id');
         return;
     }
-    Movie.findById(gameId).exec(function(err, movie){
+    Movie.findById(movieId).exec(function(err, movie){
         if (err) {
             console.log('Error Occured', err);
             res.status(200).send('Internal Error Occurred.');
@@ -78,13 +80,13 @@ module.exports.getOneMovie = function(req, res) {
 
 module.exports.modifyMovie = function(req, res){
     console.log('Modify Movie Request');
-    const gameId = req.params.gameId;
+    const movieId = req.params.movieId;
     const updateData = req.query;
-    if(!mongoose.Types.ObjectId.isValid(gameId)){
+    if(!mongoose.Types.ObjectId.isValid(movieId)){
         res.status(200).send('Not a valid Movie ID');
         return;
     }
-    Movie.findById(gameId).exec(function(err, movie){
+    Movie.findById(movieId).exec(function(err, movie){
         if(err){
             console.log('Failed to get a movie', err);
             res.status(400).send('Error Occurred during modifying a movie.');
@@ -108,12 +110,12 @@ module.exports.modifyMovie = function(req, res){
 
 module.exports.replaceMovie = function(req, res){
     console.log('Replace Movie Request');
-    const gameId = req.params.gameId;
-    if(!mongoose.Types.ObjectId.isValid(gameId)){
-        res.status(200).send(gameId + ' is not a valid Movie ID');
+    const movieId = req.params.movieId;
+    if(!mongoose.Types.ObjectId.isValid(movieId)){
+        res.status(200).send(movieId + ' is not a valid Movie ID');
         return;
     }
-    Movie.findById(gameId).select('_id').exec(function(err, movie){
+    Movie.findById(movieId).select('_id').exec(function(err, movie){
         if(err){
             console.log(err);
             res.status(200).send('Error getting movie data');
@@ -138,16 +140,19 @@ module.exports.replaceMovie = function(req, res){
 
 module.exports.deleteMovie = function(req, res){
     console.log('Delete Movie Request');
-    const gameId = req.params.gameId;
-    if(!mongoose.Types.ObjectId.isValid(gameId)){
-        res.status(200).send(gameId + ' is not a valid Movie ID');
+    const movieId = req.params.movieId;
+    if(!mongoose.Types.ObjectId.isValid(movieId)){
+        res.status(200).send(movieId + ' is not a valid Movie ID');
     }
-    Movie.findByIdAndDelete(gameId, function(err, response){
+    Movie.findByIdAndDelete(movieId, function(err, response){
         if(err){
             console.log(err);
             res.status(200).send('Error Occurred deleting a movie');
-        }else{
-            res.status(200).send(response);
+        }else if(!response){
+            res.status(404).send('Movie ID doesn\'t exist in the System');
+        } else{
+            console.log(response);
+            res.status(200).send('Movie Deleted Successfully');
         }
     })
 

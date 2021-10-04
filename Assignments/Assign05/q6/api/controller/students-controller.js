@@ -63,13 +63,13 @@ module.exports.addStudent = function(req, res) {
 
 module.exports.modifyStudent = function(req, res){
     console.log('Modify Student Request');
-    const gameId = req.params.gameId;
+    const studentId = req.params.studentId;
     const updateData = req.query;
-    if(!mongoose.Types.ObjectId.isValid(gameId)){
+    if(!mongoose.Types.ObjectId.isValid(studentId)){
         res.status(200).send('Not a valid Student ID');
         return;
     }
-    Student.findById(gameId).exec(function(err, student){
+    Student.findById(studentId).exec(function(err, student){
         if(err){
             console.log('Failed to get a student', err);
             res.status(400).send('Error Occurred during modifying a student.');
@@ -93,12 +93,12 @@ module.exports.modifyStudent = function(req, res){
 
 module.exports.replaceStudent = function(req, res){
     console.log('Replace Student Request');
-    const gameId = req.params.gameId;
-    if(!mongoose.Types.ObjectId.isValid(gameId)){
-        res.status(200).send(gameId + ' is not a valid Student ID');
+    const studentId = req.params.studentId;
+    if(!mongoose.Types.ObjectId.isValid(studentId)){
+        res.status(200).send(studentId + ' is not a valid Student ID');
         return;
     }
-    Student.findById(gameId).select('_id').exec(function(err, student){
+    Student.findById(studentId).select('_id').exec(function(err, student){
         if(err){
             console.log(err);
             res.status(200).send('Error getting student data');
@@ -123,11 +123,11 @@ module.exports.replaceStudent = function(req, res){
 
 module.exports.deleteStudent = function(req, res){
     console.log('Delete Student Request');
-    const gameId = req.params.gameId;
-    if(!mongoose.Types.ObjectId.isValid(gameId)){
-        res.status(200).send(gameId + ' is not a valid Student ID');
+    const studentId = req.params.studentId;
+    if(!mongoose.Types.ObjectId.isValid(studentId)){
+        res.status(200).send(studentId + ' is not a valid Student ID');
     }
-    Student.findByIdAndDelete(gameId, function(err, response){
+    Student.findByIdAndDelete(studentId, function(err, response){
         if(err){
             console.log(err);
             res.status(200).send('Error Occurred deleting a student');

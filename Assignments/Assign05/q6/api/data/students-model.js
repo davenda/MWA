@@ -1,12 +1,5 @@
 const mongoose = require('mongoose');
-
-const courseSchema = {
-    'name': String,
-    code: {
-        type: String,
-        required: true
-    }
-}
+const courseSchema = require('./courses-model');
 const studentSchema = new mongoose.Schema({
     name: {
         type: String,

@@ -1,6 +1,5 @@
 require('../data/db');
 const mongoose = require('mongoose');
-
 const Student = mongoose.model('Student');
 
 module.exports.getAllStudents = function(req, res) {
@@ -57,7 +56,6 @@ module.exports.addStudent = function(req, res) {
             console.log('Error Occurred', err);
             res.status(200).send('Failed to add a student to database.')
         } else {
-            console.log('Student Added Successfully');
             res.status(201).send('Student Added Succesfully');
         }
     })

@@ -17,5 +17,4 @@ router.route('/movies/:movieId/actors')
     .post(actorController.addActor);
 router.route('/movies/:movieId/actors/:actorId')
     .get(actorController.getOneActor);
-
 module.exports = router;

@@ -5,8 +5,8 @@ const Movie = mongoose.model('Movie');
 const Actor = mongoose.model('Actor', actorSchema);
 module.exports.getAllMovies = function(req, res){
     console.log('Get All Movies Request');
-    let offset = 5;
-    let count = 5;
+    let offset = 0;
+    let count = 50;
     if(req.params.offset && req.params.count){
         offset = req.params.offset;
         count = req.params.count;

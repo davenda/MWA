@@ -131,9 +131,15 @@ module.exports.deleteStudent = function(req, res){
         if(err){
             console.log(err);
             res.status(200).send('Error Occurred deleting a student');
+        }else if(!response){
+            res.status(404)
+                .send('Student ID not found in the system.');
         }else{
-            res.status(200).send(response);
+            res.status(200)
+                .json({
+                    message: 'Student Deleted from System.',
+                    studentData: response
+                });
         }
-    })
-
+    });
 }

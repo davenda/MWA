@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
-const courseSchema = mongoose.Schema({
-    'name': String,
+module.exports = new mongoose.Schema({
+    name: String,
     code: {
-        type: String,
-        required: true
+        type: String
     }
-})
+}) 

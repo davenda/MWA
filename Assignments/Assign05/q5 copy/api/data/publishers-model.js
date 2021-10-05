@@ -5,7 +5,8 @@ module.exports = new mongoose.Schema({
         type: String,
         required: true
     },
-    age: Number,
-    nationality: String,
-    
+    country: {
+        type: String,
+        required: true
+    }
 });

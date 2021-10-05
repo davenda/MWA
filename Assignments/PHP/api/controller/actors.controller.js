@@ -3,13 +3,13 @@ const Movie = mongoose.model('Movie');
 
 module.exports.getActors = function(req, res){
     console.log('Get Actor Request');
-    const actorId = req.params.actorId;
-    if(!mongoose.Types.ObjectId.isValid(actorId)){
+    const movieId = req.params.movieId;
+    if(!mongoose.Types.ObjectId.isValid(movieId)){
         res.status(400)
             .send('Not a valid Movie ID');
         return;
     }
-    Movie.findById(actorId)
+    Movie.findById(movieId)
         .select('actors')
         .exec(function(err, response){
             if(err){
@@ -23,7 +23,7 @@ module.exports.getActors = function(req, res){
             }
             else{
                 res.status(200)
-                    .send(response);
+                    .send(response.actors);
             }
         });
 };
@@ -31,60 +31,66 @@ module.exports.getActors = function(req, res){
 module.exports.getOneActor = function(req, res){
     console.log('Get Actor By ActorId Request');
     const actorId = req.params.actorId;
+    const movieId = req.params.movieId;
     console.log(req.params);
-
-    if(!mongoose.Types.ObjectId.isValid(actorId)){
+    if(!mongoose.Types.ObjectId.isValid(movieId)){
         res.status(400).send('Not a Valid Movie Id');
         return;
     }
-    Movie.find({'_id': actorId, 'actors': {'$elemMatch': {'_id': actorId}}})
+    Movie.findById(movieId)
         .select('actors')
-        .exec(function(err, response){
+        .exec(function(err, movie){
             if(err){
                 console.log(err);
                 res.status(500)
                     .send('Internal Error Occurred.');
             }
-            else if(!response){
+            else if(!movie){
                 res.status(404)
                     .send('Movie ID not found in the system.')
             }
             else{
                 res.status(200)
-                    .send(response);
+                    .send(movie.actors.id(actorId));
             }
         })
 }
 
 module.exports.addActor = function(req, res){
     console.log('Add Actor Request');
-    const actorId = req.params.actorId;
-    if(!mongoose.Types.ObjectId.isValid(actorId)){
+    const movieId = req.params.movieId;
+    console.log(movieId);
+    if(!mongoose.Types.ObjectId.isValid(movieId)){
         res.status(400).send('Not a valid Movie ID');
         return;
     }
-    Movie.findById(actorId)
+    Movie.findById(movieId)
         .select('actors')
-        .exec(function(err, actor){
+        .exec(function(err, movie){
+            console.log(movie);
             if(err){
                 console.log(err);
-                res.status(500).send('Failed to get a Movie with Actor ID', actorId);
+                res.status(500).send('Failed to get a Movie with Movie ID', movieId);
+            }
+            else if(!movie){
+                res.status(404).send('Movie Id not found in the system');
             }
             else{
                 console.log(req.query);
-                if(actor.actors[0] == ''){
-                    actor.actors.pop();
-                }
-                actor.actors.push(req.query);
-                console.log(actor);
-                actor.save(function(err, response){
+                movie.actors.push(req.query);
+                console.log(movie);
+                movie.save(function(err, response){
                     if(err){
                         console.log(err);
                         res.status(500).send(err.message);
                     }
                     else{
-                        res.status(201).send(response);
-                    }
+                        res.status(201)                
+                            .json({
+                                message: 'Actor Added to the System.',
+                                studentData: response
+                            });
+                        }
                 })
             }
         })

@@ -23,7 +23,7 @@ module.exports.getCourses = function(req, res){
             }
             else{
                 res.status(200)
-                    .send(response);
+                    .send(response.courses);
             }
         });
 };
@@ -38,7 +38,7 @@ module.exports.getOneCourse = function(req, res){
         res.status(400).send('Not a Valid Student Id');
         return;
     }
-    Student.find({'_id': studentId, 'courses': {'$elemMatch': {'_id': courseId}}})
+    Student.findById(studentId)
         .select('courses')
         .exec(function(err, response){
             if(err){
@@ -51,8 +51,8 @@ module.exports.getOneCourse = function(req, res){
                     .send('Student ID not found in the system.')
             }
             else{
-                res.status(200)
-                    .send(response);
+                // res.status(200)
+                //     .send(response.courses.id());
             }
         })
 }
@@ -66,19 +66,15 @@ module.exports.addCourse = function(req, res){
     }
     Student.findById(studentId)
         .select('courses')
-        .exec(function(err, course){
+        .exec(function(err, student){
             if(err){
                 console.log(err);
                 res.status(500).send('Failed to get a Student with studentId', studentId);
             }
             else{
                 console.log(req.query);
-                if(course.courses[0] == ''){
-                    course.courses.pop();
-                }
-                course.courses.push(req.query);
-                console.log(course);
-                course.save(function(err, response){
+                student.courses.push(req.query);
+                student.save(function(err, response){
                     if(err){
                         console.log(err);
                         res.status(500).send(err.message);

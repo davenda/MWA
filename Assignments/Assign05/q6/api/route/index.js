@@ -14,5 +14,7 @@ router.route('/students/:studentId')
 router.route('/students/:studentId/courses')
     .get(courseController.getCourses)
     .post(courseController.addCourse);
+router.route('/students/:studentId/courses/:courseId')
+    .get(courseController.getOneCourse);
 
 module.exports = router;

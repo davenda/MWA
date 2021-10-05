@@ -5,7 +5,12 @@ module.exports = new mongoose.Schema({
         type: String,
         required: true
     },
-    age: Number,
-    nationality: String,
-    
+    review: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
 });

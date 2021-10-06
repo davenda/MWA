@@ -8,18 +8,13 @@
         <script>
             angular.module('myTemplateApp', []).controller('MyFirstController', MyFirstController);
             function MyFirstController($scope){
-                $scope.students = $scope.students= [
-                    {name: 'Jack', course: 'MPP', gpa: 3.0},
-                    {name: 'John', course: 'MWA', gpa: 2.5}, 
-                    {name:'Jill', course: 'SWE', gpa: 3.3}, 
-                    {name: 'Jim', course: 'MWA', gpa: 2.8}
-                ];
+                $scope.name = 'Jack'
             }
         </script>
     </head>
     <body>
         <div ng-controller="MyFirstController">
-            <p ng-repeat='student in students'>{{student.name}} with GPA {{student.gpa}} taking {{student.course}}</p>
+                <p>Hello, {{name}}!</p>
         </div>
     </body>
 </html>

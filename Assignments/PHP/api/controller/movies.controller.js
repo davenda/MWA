@@ -116,15 +116,16 @@ module.exports.replaceMovie = function(req, res){
         return;
     }
     Movie.findById(movieId).select('_id').exec(function(err, movie){
+        console.log(movie);
         if(err){
             console.log(err);
             res.status(200).send('Error getting movie data');
         }
         else{
-            console.log(movie);
             Object.keys(req.query).forEach(function(key){
                 movie[key] = req.query[key];
             })
+            console.log(movie)
             movie.save(function(err, response){
                 if(err){
                     console.log(err)

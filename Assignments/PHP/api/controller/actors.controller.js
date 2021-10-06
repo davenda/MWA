@@ -95,3 +95,23 @@ module.exports.addActor = function(req, res){
             }
         })
 }
+
+module.exports.getAllActors = function(req, res){
+    Movie.find()
+        .select('actors')
+        .exec(function(err, actors){
+            if(err){
+                console.log(err);
+                res.status(500)
+                    .send('Internal Error Occurs');
+            }
+            else if(!actors){
+                res.status(404)
+                    .send('Actor not found in the system');
+            }
+            else{
+                res.status(200)
+                    .send(actors);
+            }
+        })
+}

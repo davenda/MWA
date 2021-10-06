@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myFirstApp">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+        <script>
+            angular.module('myFirstApp', []).controller('MyFirstController', MyFirstController);
+            function MyFirstController($scope){
+                $scope.number = 0;
+                $scope.increment = function(val){
+                    $scope.number = $scope.number + val;
+                }
+                $scope.decrement = function(val){
+                    $scope.number = $scope.number - val;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div ng-controller="MyFirstController">
+            <button ng-click=increment(5)>+5</button>
+            <button ng-click=decrement(5)>-5</button>
+            <h1>{{number}}</h1>
+        </div>
+    </body>
+</html>

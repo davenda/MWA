@@ -4,19 +4,14 @@ angular
 function config($routeProvider){
     $routeProvider
         .when('/', {
-            templateUrl: 'main/main.html',
+            templateUrl: 'template/main.html',
             controller: 'MainController',
             controllerAs: 'mainCtrl'
         })
         .when('/about', {
-            templateUrl: 'about/about.html',
+            templateUrl: 'template/about.html',
             controller: 'AboutController',
             controllerAs: 'aboutCtrl'
-        })
-        .when('/joke/:jokeId', {
-            templateUrl: 'joke/joke.html',
-            controller: 'JokeController',
-            controllerAs: 'jokeCtrl'
         })
         .otherwise({
             template:'<h1>Oops...</h1>'

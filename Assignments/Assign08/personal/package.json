@@ -1,0 +1,15 @@
+{
+  "name": "php",
+  "version": "1.0.0",
+  "description": "Personal Hobby Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dawit Diriba",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.8"
+  }
+}

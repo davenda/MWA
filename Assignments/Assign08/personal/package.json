@@ -9,6 +9,8 @@
   "author": "Dawit Diriba",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.8.2",
+    "angular-route": "^1.8.2",
     "express": "^4.17.1",
     "mongoose": "^6.0.8"
   }

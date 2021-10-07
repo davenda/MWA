@@ -1,12 +1,13 @@
 angular
     .module('meanGames')
     .controller('GamesController', GamesController);
-function GamesController($http){
+function GamesController(GamesDataFactory){
     const vm = this;
     vm.title = 'MEAN Games App';
-    $http
-        .get('/api/games')
+    GamesDataFactory
+        .getAllGames()
         .then(function(res){
             vm.list = res;
-        })
+            console.log(res);
+        });
 }

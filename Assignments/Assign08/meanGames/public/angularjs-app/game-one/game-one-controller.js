@@ -1,12 +1,21 @@
 angular
     .module('meanGames')
     .controller('GameController', GameController);
-function GameController($routeParams, $http){
+function GameController($routeParams, GamesDataFactory){
     const vm = this;
-    $http
-        .get('/api/games/' + $routeParams.gameId)
+    // $http
+    //     .get('/api/games/' + $routeParams.gameId)
+    //     .then(function(res){
+    //         vm.game = res.data;
+    //     })
+    function _getStarRating(rate){
+        return new Array(rate);
+    }
+    GamesDataFactory
+        .getOneGame($routeParams.gameId)
         .then(function(res){
-            vm.game = res.data;
-            console.log(vm.game)
-        })
+            vm.game = res;
+            vm.rating = _getStarRating(response.rate);
+            console.log(res);
+        });
 }

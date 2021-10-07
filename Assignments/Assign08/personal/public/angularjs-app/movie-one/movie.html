@@ -1,0 +1,16 @@
+<h1>Name of the Movie: {{vm.movieDetails.title}} ({{vm.movieDetails.year}})</h1>
+<h5>Actors</h5>
+<ul>
+    <li>
+        <h5 ng-repeat='actor in vm.movieDetails.actors'>Name: {{actor.name}}
+        <ul>
+            <li>
+                Age: {{actor.age}}
+            </li>
+            <li>
+                Nationality: {{actor.nationality}}
+            </li>
+        </ul>  
+        </h5>
+    </li>
+</ul>

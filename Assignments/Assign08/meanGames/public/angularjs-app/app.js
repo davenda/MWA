@@ -14,4 +14,7 @@ function config($routeProvider, $locationProvider) {
             controller: 'GameController',
             controllerAs: 'vm'
         })
+        .otherwise({
+            templateUrl: '/angularjs-app/main/welcome.html'
+        })
 }

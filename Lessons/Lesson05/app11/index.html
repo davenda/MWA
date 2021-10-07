@@ -8,12 +8,13 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.min.js"></script>
     </head>
     <body>
-        <div ng-view>
+        <div ng-view='' class='ng-scope'>
 
         </div>
         <script src='app.js'></script>
-        <script src='controller.js'></script>
-        <script src='aboutController.js'></script>
-        <script src='mainController.js'></script>
+        <script src='main/mainController.js'></script>
+        <script src='about/aboutController.js'></script>
+        <script src='joke/jokeController.js'></script>
+        <script src='dataFactory/dataFactory.js'></script>
     </body>
 </html>

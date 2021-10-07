@@ -1,6 +1,6 @@
-angular.module('MyProperApp')
+angular.module('meanGame')
     .controller('MyProperController', MyProperController);
 function MyProperController(){
     const vm = this;
-    vm.name = 'JackDaniel';
+    vm.name = 'JackDanieldddd';
 }

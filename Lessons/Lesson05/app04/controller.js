@@ -1,6 +1,6 @@
-angular.module('MyProperApp')
-    .controller('MyProperController', MyProperController);
-function MyProperController(){
+angular.module('MyProperApp', [])
+    .controller('MyProperController', Controller);
+function Controller(){
     const vm = this;
     vm.name = 'JackDaniel';
 }

@@ -9,22 +9,22 @@ module.exports.getPosts = function (req, res) {
     console.log(req.query);
     let offset;
     let count;
-    // if(req.query.offset && req.query.count){
-    //     offset = 0;
-    //     count = 5;
-    // }
-    // if(isNaN(req.query.offset) && isNaN(req.query.count)){
-    //     res.status(400).json('Offset and Count should be valid numbers')
-    //     return;
-    // }
-    // else if(parseInt(req.query.offset) < 0 || parseInt(req.query.count) < 0){
-    //     res.status(400).json('Offset and Count should be positive numbers');
-    //     return;
-    // }
-    // else{
-    offset = parseInt(req.query.offset);
-    count = parseInt(req.query.count);
-    // }
+    if(!req.query.count || !req.query.offset){
+        offset = 0;
+        count = 5;
+    }
+    else if(isNaN(req.query.offset) || isNaN(req.query.count)){
+        res.status(400).json('Offset and Count should be valid numbers')
+        return;
+    }
+    else if(parseInt(req.query.offset) < 0 || parseInt(req.query.count) < 0){
+        res.status(400).json('Offset and Count should be positive numbers');
+        return;
+    }
+    else{
+        offset = parseInt(req.query.offset);
+        count = parseInt(req.query.count);
+    }
     console.log(offset, count);
     // Post.find().limit(count).skip(offset).exec(function(err, posts){
     //     if(err){

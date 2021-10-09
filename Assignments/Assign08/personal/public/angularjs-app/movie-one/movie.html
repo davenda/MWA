@@ -1,16 +1,40 @@
-<h1>Name of the Movie: {{vm.movieDetails.title}} ({{vm.movieDetails.year}})</h1>
+ <img class='sidebar' 
+    src='https://image.tmdb.org/t/p/original/{{vm.movieDetails.poster_path}}'
+    width=580></br>
+<div class="card border-success mb-4" style="max-width: 65rem;">
+    <h1 class="card-header">{{vm.movieDetails.title}} ({{vm.movieDetails.year}})</h1>
+    <h3 class="card-body">
+        <span class="card-title" ng-repeat='genres in vm.movieDetails.genres'> Genres:  {{genres}}, </span></br>
+        <!-- <h3 class="card-text"> -->
+            Watch it On <a href='https://www.imdb.com/title/{{vm.movieDetails.imdb_id}}'>IMDB</a><br/>
+            Budget: {{vm.movieDetails.budget | currency}} </br>
+            <!-- production_companies: {
+                name: String,
+                country: String,
+                logo_path: String
+            }</br> -->
+            Release Date: {{vm.movieDetails.release_date | date: 'MMM dd, yyyy'}} </br>
+            Revenue: {{vm.movieDetails.revenue | currency}} </br>
+            actors: [actorSchema]</br>
+            {{vm.movieDetails.overview}}
+        <!-- </h3> -->
+    </h3>
+</div>
+<h5>
+
+</h5>
 <h5>Actors</h5>
 <ul>
     <li>
         <h5 ng-repeat='actor in vm.movieDetails.actors'>Name: {{actor.name}}
-        <ul>
-            <li>
-                Age: {{actor.age}}
-            </li>
-            <li>
-                Nationality: {{actor.nationality}}
-            </li>
-        </ul>  
+            <ul>
+                <li>
+                    Age: {{actor.age}}
+                </li>
+                <li>
+                    Nationality: {{actor.nationality}}
+                </li>
+            </ul>  
         </h5>
     </li>
 </ul>

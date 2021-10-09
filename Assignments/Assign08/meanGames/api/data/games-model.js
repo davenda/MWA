@@ -21,7 +21,7 @@ const gameSchema = new mongoose.Schema({
     year: Number,
     minPlayer: Number,
     maxPlayer: Number,
-    designers: String, 
+    designer: String, 
     publisher: publisherSchema,
     reviews: [reviewSchema]
 });

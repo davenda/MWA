@@ -13,7 +13,10 @@ function config($routeProvider){
             controller: 'MovieController',
             controllerAs: 'vm'
         })
+        .when('/about', {
+            templateUrl: 'angularjs-app/about/about.html'
+        })
         .otherwise({
-            template:'<h3>You are in a wrong place.</h3>'
+            templateUrl: 'angularjs-app/main/welcome.html'
         })
 }

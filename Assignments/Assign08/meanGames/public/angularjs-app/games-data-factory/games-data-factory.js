@@ -4,7 +4,8 @@ angular
 function GamesDataFactory($http) {
     return {
         getAllGames: getAllGames,
-        getOneGame: getOneGame
+        getOneGame: getOneGame,
+        postGame: postGame
     }
     function getAllGames() {
         return $http
@@ -18,12 +19,17 @@ function GamesDataFactory($http) {
             .then(complete)
             .catch(failed);
     }
+    function postGame(game){
+        return $http
+            .post('/api/games/', game)
+            .then(complete)
+            .catch(failed);
+    }
     function complete(res){
-        console.log(res);
         return res.data;
     }
     function failed(error){
-        console.log(err);
+        console.log(error);
         return error.status.statusText
     }
 }

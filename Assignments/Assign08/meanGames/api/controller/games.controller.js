@@ -50,14 +50,15 @@ const getOneGame = function(req, res) {
 }
 
 const addGame = function(req, res) {
-    console.log('Add Game Reques');
-    const newGame = req.query;
+    console.log('Add Game Request');
+    const newGame = new Game(req.body);
     Game.create(newGame, function(err, resp){
         if (err) {
             console.log('Error Occurred', err);
-            res.status(200).send('Failed to add a game to database.')
+            res.status(200).json('Failed to add a game to database.')
         } else {
-            res.status(201).send('Game Added Succesfully');
+            console.log(resp);
+            res.status(201).json('Game Added Succesfully');
         }
     })
 }

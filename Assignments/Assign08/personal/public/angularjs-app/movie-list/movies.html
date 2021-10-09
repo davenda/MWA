@@ -1,6 +1,12 @@
-<h3>{{vm.title}}</h3>
-<ul>
-    <li ng-repeat='movie in vm.movies'>
-        <a ng-href=/#/movies/{{movie._id}}>{{movie.title}}</a>
-    </li>
-</ul>
+<div class="card border-dark mb-3" style="max-width: 100%;">
+    <div class="card-header">{{vm.title}}</div>
+    <div class="card-body">
+      <h4 class="card-title" >
+        <ul>
+            <li ng-repeat='movie in vm.movies'>
+                <a ng-href=/#/movies/{{movie._id}}>{{movie.title}}</a>
+            </li>
+        </ul>
+      </h4>
+    </div>
+  </div>

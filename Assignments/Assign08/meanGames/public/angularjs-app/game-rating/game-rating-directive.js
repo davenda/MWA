@@ -3,13 +3,8 @@ angular
     .directive('gameRating', GameRating);
 function GameRating(){
     return {
-        restring: 'E',
-        templateUrl: 'angular-app/game-rating/rating.html',
-        bindToController: true,
-        controller: 'GameController',
-        controllerAs: 'vm',
-        scope:{
-            stars: '@'
-        }
+        restrict: 'E',
+        // replace: true,
+        templateUrl: 'angularjs-app/game-rating/rating.html'
     }
 }

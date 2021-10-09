@@ -15,7 +15,6 @@ function GameController($routeParams, GamesDataFactory){
         .getOneGame($routeParams.gameId)
         .then(function(res){
             vm.game = res;
-            vm.rating = _getStarRating(response.rate);
-            console.log(res);
+            vm.rating = _getStarRating(res.rate);
         });
 }

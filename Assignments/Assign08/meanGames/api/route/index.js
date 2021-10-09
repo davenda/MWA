@@ -3,6 +3,7 @@ const router = express.Router();
 const gameController = require('../controller/games.controller');
 const publisherController = require('../controller/publishers.controller');
 const reviewController = require('../controller/reviews.controller');
+const userController = require('../controller/users.controller');
 
 router.route('/games')
     .get(gameController.getGames)
@@ -24,4 +25,8 @@ router.route('/games/:gameId/reviews')
 
 router.route('/games/:gameId/reviews/:reviewId')
     .get(reviewController.getOneReview);
+
+router.route('/users')
+    .post(userController.register)
+    .get(userController.login);
 module.exports = router;

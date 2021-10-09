@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 require('./games-model');
+require('./users-model');
 
 const dbName = 'newTTestDB';
 const dbUrl = 'mongodb://127.0.0.1:27017/' + dbName;

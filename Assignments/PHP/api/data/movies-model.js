@@ -10,6 +10,18 @@ const movieSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    budget: Number,
+    genres: [String],
+    imdb_id: String,
+    overview: String,
+    poster_path: String,
+    production_companies: {
+        name: String,
+        country: String,
+        logo_path: String
+    },
+    release_date: Date,
+    revenue: Number,
     actors: [actorSchema]
 })
 

@@ -12,6 +12,7 @@ function PostController(PostDataFactory, $routeParams){
     PostDataFactory
         .getOnePost($routeParams.postId)
         .then(function(response){
+            console.log(response);
             vm.data = response;
         })
 }

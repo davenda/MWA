@@ -1,5 +1,21 @@
 <ul>
-    <li ng-repeat='post in vm.posts.data'>
+    <li ng-repeat='post in vm.posts'>
         <a ng-href="/#!/posts/{{post._id}}">{{post.title}}</a>
     </li>
 </ul>
+
+<form name='vm.postForm' ng-submit=vm.addPost()>
+    To add a post please fill in the following fields.</br>
+    Job Title: <input type='text' name='title' required ng-model='vm.newPostTitle'></br>
+    Salary: <input type='text' name='salary' required ng-model='vm.newSalary'><br/>
+    Description: <input type='text' name='description' required ng-model=vm.newDescription><br/>
+    Street: <input type='text' name='street' required ng-model=vm.newStreet><br/>
+    City: <input type='text' name='city' required ng-model=vm.newCity><br/>
+    Country: <input type='text' name='country' required ng-model=vm.newCountry><br/>
+    State: <input type='text' name='state' required ng-model=vm.newState><br/>
+    Zip: <input type='text' name='zip' required ng-model=vm.newZip><br/>
+    Date: <input type='date' name='date' required ng-model=vm.newDate><br/>
+    Skills: <input type='text' name='skills' required ng-model=vm.newSkills><br/>
+    <button type='submit'>Add Job</button>
+    {{vm.addStatus}}
+</form>

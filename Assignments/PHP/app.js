@@ -2,7 +2,7 @@ const express = require('express');
 const route = require('./api/route');
 
 const app = express();
-app.set('port', 3000);
+app.set('port', 3001);
 
 app.use(express.urlencoded({extended: true}));
 app.use('/api', route);

@@ -1,0 +1,21 @@
+{
+  "name": "tripapp",
+  "version": "1.0.0",
+  "description": "Bike Trip App",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dawit Diriba",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.8.2",
+    "angular-route": "^1.8.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "i": "^0.3.7",
+    "mongoose": "^6.0.10",
+    "npm": "^8.0.0"
+  }
+}

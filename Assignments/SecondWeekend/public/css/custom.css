@@ -1,0 +1,36 @@
+html {
+    position: relative; 
+    min-height: 100%;
+}
+body {
+    padding: 10px; 
+}
+.padded { 
+    padding-top: 30px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 105px;
+    background-color: #f5f5f5;
+    padding-top: 5px; 
+}
+.sidebar{
+    float: left; 
+    margin: 1em; 
+    border: 1em solid black;
+}
+.actor{
+    /* border: 1px solid #ddd; */
+    border-radius: 4px;
+    padding: 2.5px;
+    margin: 5px;
+    width: 196px;
+    float: right;
+}
+
+.actor > img{
+    border-radius: 10px 10px 0 0;
+    width: 200px;
+}

@@ -34,3 +34,14 @@ body {
     border-radius: 10px 10px 0 0;
     width: 200px;
 }
+.addMovie{
+    float: right;
+    width: 50%;
+    /* margin: 10px; */
+    padding: 15px;
+    background-color: #22424A;
+}
+.movieList{
+    float: left;
+    width: 50%;
+}

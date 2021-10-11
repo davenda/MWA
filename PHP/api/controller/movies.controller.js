@@ -48,18 +48,20 @@ module.exports.getAllMovies = function(req, res){
 
 module.exports.addMovie = function(req, res){
     console.log('Add Movie POST Request');
-    const movieData = new Movie(req.query);
-    
+    const movieData = new Movie(req.body);
+    movieData.year = new Date(req.body.release_date).getFullYear();
+    console.log(req.body);
     if(req.query.name){
         const actorData = {
             'name': req.query.name,
-            'age': req.query.age,
-            'nationality': req.query.country
+            'popularity': req.query.popularity,
+            'character': req.query.character,
+            'poster_path': req.query.poster_path
         };
         movieData.actors.push(new Actor(actorData));
     }
     console.log(movieData);
-    Movie.create(req.query, function(err, response){
+    Movie.create(movieData, function(err, response){
         if(err){
             res.status(500).send(err.message);
             console.log(err);

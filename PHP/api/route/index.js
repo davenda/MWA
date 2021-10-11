@@ -22,4 +22,4 @@ router.route('/movies/:movieId/actors/:actorId')
 router.route('/actors')
     .get(actorController.getAllActors)
     .put(actorController.loadActors);
-module.exports = router;
+module.exports = router; 

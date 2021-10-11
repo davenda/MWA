@@ -24,7 +24,7 @@ function MovieDataFactory($http){
     }
     function addMovie(movieData){
         return $http
-            .movie('/api/movies', movieData)
+            .post('/api/movies', movieData)
             .then(complete)
             .catch(failed);
     }

@@ -28,10 +28,10 @@
                     <a class="nav-link" href="/#/movies/">Movie List</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/#/movies/615fa74dc245c7965b1320cb">Add Movies</a>
+                    <a class="nav-link" href="/#/movies/">Add</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/#/movies/">Update Movies</a>
+                    <a class="nav-link" href="/#/search/">Search</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/#/about/">About</a>
@@ -47,13 +47,11 @@
                     </div>
                   </li>
                 </ul>
-                <form class="d-flex">
-                  <input class="form-control me-sm-2" type="text" placeholder="Search">
-                  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <movie-searching></movie-searching>
               </div>
             </div>
           </nav>
+          
         <div ng-view>
         
         </div>
@@ -63,5 +61,7 @@
         <script src='angularjs-app/movie-list/movies-list-controller.js'></script>
         <script src='angularjs-app/movie-one/movie-one-controller.js'></script>
         <script src="angularjs-app/movie-factory/movie-factory.js"></script>
+        <script src="angularjs-app/movie-edit/movie-edit-controller.js"></script>
+        <script src="angularjs-app/movie-search/movie-search-directive.js"></script>
     </body>
 </html>

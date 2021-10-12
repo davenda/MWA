@@ -37,15 +37,11 @@
       </li>
     </ul>
   </div>
-  <form class="d-flex">
-    <input class="form-control me-sm-2" type="text" placeholder="Search">
-    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-  </form>
 </div>
 
   <form class='addMovie' name='vm.movieForm' ng-submit=vm.addMovie()>
     <fieldset>
-      <legend>Legend</legend>
+      <legend>Add Movie</legend>
       <label class="form-label mt-2 mb-1" >Movie Title</label>
       <input type="text" placeholder="Name of the movie" class="form-control" required ng-model="vm.title">
       <label class="form-label mt-2 mb-1" >Release Date</label>

@@ -3,14 +3,24 @@ angular
     .config(config);
 function config($routeProvider){
     $routeProvider
-        .when('/movies', {
-            templateUrl: 'angularjs-app/movie-list/movies.html',
-            controller: 'MoviesController',
-            controllerAs: 'vm'
-        })
+    .when('/movies', {
+        templateUrl: 'angularjs-app/movie-list/movies.html',
+        controller: 'MoviesController',
+        controllerAs: 'vm'
+    })
+    .when('/edit/:movieId', {
+        templateUrl: 'angularjs-app/movie-edit/movie-edit.html',
+        controller: 'MovieEditController',
+        controllerAs: 'vm'
+    })
         .when('/movies/:movieId', {
             templateUrl: 'angularjs-app/movie-one/movie.html',
             controller: 'MovieController',
+            controllerAs: 'vm'
+        })
+        .when('/search', {
+            templateUrl: 'angularjs-app/movie-search/movie-search.html',
+            controller: 'MovieSearch',
             controllerAs: 'vm'
         })
         .when('/about', {

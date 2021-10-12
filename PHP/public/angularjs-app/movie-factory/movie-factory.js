@@ -16,9 +16,13 @@ function MovieDataFactory($http){
             .catch(failed);
     } 
     function getMovies(page){
+        let query = '';
+        Object.keys(page).forEach(function(key){
+            query = query + key + '=' + page[key] + '&';
+        });
+        console.log(query);
         return $http
-            // .get('/api/movies', data)
-            .get('/api/movies?count=' + page.count + '&offset=' + page.offset)
+            .get('/api/movies?' + query)
             .then(complete)
             .catch(failed);
     }
@@ -28,20 +32,21 @@ function MovieDataFactory($http){
             .then(complete)
             .catch(failed);
     }
-    function modifyMovie(movieId){
+    function modifyMovie(movieData){
         return $http
-            .patch('/api/movie/' + movieId)
+            .patch('/api/movies/' + movieData._id, movieData)
             .then(complete)
             .catch(failed)
     }
     function deleteMovie(movieId){
+        console.log(movieId);
         return $http
-            .deleteMovie('/api/movie/' + movieId)
+            .delete('/api/movies/' + movieId)
             .then(complete)
             .catch(failed);
     }
     function complete(response){
-        console.log(response.data)
+        // console.log(response.data)
         return response.data;
     }
     function failed(err){

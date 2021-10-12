@@ -1,0 +1,25 @@
+<img class='sidebar' 
+src='https://image.tmdb.org/t/p/original/{{vm.movieDetails.poster_path}}'
+width=580></br>
+<form class='addMovie' name='vm.movieForm' ng-submit=vm.editMovie()>
+    <fieldset>
+      <legend>Edit Movie</legend>
+      <label class="form-label mt-2 mb-1" >Movie Title</label>
+      <input type="text" class="form-control" required ng-model="vm.movieDetails.title">
+      <label class="form-label mt-2 mb-1" >Release Date</label>
+      <input type="date" class="form-control" required ng-model="vm.movieDetails.release_date | date: mm/dd/yyyy">
+      <label class="form-label mt-2 mb-1" >Spent Budget </label>
+      <input type="text" class="form-control" required ng-model="vm.movieDetails.budget">
+      <label class="form-label mt-2 mb-1" >Generated Revenue</label>
+      <input type="text" class="form-control" required ng-model="vm.movieDetails.revenue">
+      <label class="form-label mt-2 mb-1" >Genres</label>
+      <input type="text" class="form-control" required ng-model="vm.movieDetails.genres">
+      <label class="form-label mt-2 mb-1" >IMDB ID(Only If you know)</label>
+      <input type="text" class="form-control" ng-model="vm.movieDetails.imdb_id">
+      <label class="form-label mt-2 mb-1" >Overview</label>
+      <input type="text" class="form-control" required ng-model="vm.movieDetails.overview">
+      <label class="form-label mt-2 mb-1" >Movie Poster Link(Only If you have)</label>
+      <input type="text" class="form-control" ng-model="vm.movieDetails.poster_path"></br>
+      <button type="submit" class="btn btn-primary">Save Movie</button>     {{vm.addStatus}}
+    </fieldset>
+  </form>

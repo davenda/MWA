@@ -8,27 +8,33 @@ module.exports.getAllMovies = function(req, res){
     console.log('Get All Movies Request');
     let offset;
     let count;
-    console.log(req.params);
-    if(!req.query.count || !req.query.offset){
+    console.log(req.query);
+    const data = req.query;
+    if(!data.count || !req.query.offset){
         offset = 0;
-        count = 5;
+        count = 50;
     }
-    else if(isNaN(req.query.offset) || isNaN(req.query.count)){
+    else if(isNaN(data.offset) || isNaN(data.count)){
         res.status(400).json('Offset and Count should be valid numbers')
         return;
     }
-    else if(parseInt(req.query.offset) < 0 || parseInt(req.query.count) < 0){
+    else if(parseInt(data.offset) < 0 || parseInt(data.count) < 1){
         res.status(400).json('Offset and Count should be positive numbers');
         return;
     }
     else{
-        offset = parseInt(req.query.offset);
-        count = parseInt(req.query.count);
+        offset = parseInt(data.offset);
+        count = parseInt(data.count);
     }
-
-    Movie.find()
+    Object.keys(data).forEach(function(key){
+        data[key] = {
+            $regex:  data[key], $options: 'i'
+        }
+    })
+    console.log(data);
+    Movie.find(data)
         .skip(offset)
-        .limit(count)
+        .limit(50)
         .exec(function(err, movies){
             if(err){
                 console.log(err);
@@ -40,6 +46,7 @@ module.exports.getAllMovies = function(req, res){
                     .send('Movie Not Found');
             }
             else{
+                // console.log(movies);
                 res.status(200)
                     .json(movies);
             }
@@ -94,7 +101,10 @@ module.exports.getOneMovie = function(req, res) {
 module.exports.modifyMovie = function(req, res){
     console.log('Modify Movie Request');
     const movieId = req.params.movieId;
-    const updateData = req.query;
+    const updateData = req.body;
+    // console.log(req.query);
+    // console.log(req.body);
+    // console.log(req.params);
     if(!mongoose.Types.ObjectId.isValid(movieId)){
         res.status(200).send('Not a valid Movie ID');
         return;
@@ -114,6 +124,7 @@ module.exports.modifyMovie = function(req, res){
                     res.status(500).send(err.message);
                 }
                 else{
+                    console.log(err);
                     res.status(200).json(updatedMovie);
                 }
             });

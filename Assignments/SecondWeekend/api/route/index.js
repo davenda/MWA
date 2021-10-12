@@ -8,7 +8,7 @@ router.route('/movies')
     .get(moviesController.getAllMovies)
     .post(moviesController.addMovie)
     .put(moviesController.loadMovie)
-    .patch(actorController.loadActors);
+    // .patch(actorController.loadActors);
 router.route('/movies/:movieId')
     .get(moviesController.getOneMovie)
     .put(moviesController.replaceMovie)

@@ -1,10 +1,11 @@
 <!-- {{vm.movieDetails}}  -->
- 
  <img class='sidebar' 
     src='https://image.tmdb.org/t/p/original/{{vm.movieDetails.poster_path}}'
     width=580></br>
 <div class="card border-success mb-4" style="max-width: 70rem;">
-    <h1 class="card-header">{{vm.movieDetails.title}} ({{vm.movieDetails.year}})</h1>
+    <h1 class="card-header">{{vm.movieDetails.title}} ({{vm.movieDetails.year}})  
+        <a class="btn btn-secondary my-2 my-sm-0" ng-href='#/edit/{{vm.movieDetails._id}}'>Edit</a>      
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit" ng-click=vm.deleteMovie()>Delete</button></h1>
     <h3 class="card-body">
         <span class="card-title" ng-repeat='genres in vm.movieDetails.genres'> Genres:  {{genres}}, </span></br>
         <!-- <h3 class="card-text"> -->

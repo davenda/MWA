@@ -39,11 +39,11 @@ module.exports.getAllMovies = function(req, res){
             if(err){
                 console.log(err);
                 res.status(500)
-                    .send('Internal Error Occurred');
+                    .json('Internal Error Occurred');
             }
             else if(!movies){
                 res.status(404)
-                    .send('Movie Not Found');
+                    .json('Movie Not Found');
             }
             else{
                 // console.log(movies);
@@ -70,7 +70,7 @@ module.exports.addMovie = function(req, res){
     console.log(movieData);
     Movie.create(movieData, function(err, response){
         if(err){
-            res.status(500).send(err.message);
+            res.status(500).json(err.message);
             console.log(err);
         }
         else{
@@ -83,15 +83,15 @@ module.exports.getOneMovie = function(req, res) {
     console.log('Get One movie request');
     const movieId = req.params.movieId;
     if(!mongoose.Types.ObjectId.isValid(movieId)){
-        res.status(200).send('Not a valid Movie Id');
+        res.status(200).json('Not a valid Movie Id');
         return;
     }
     Movie.findById(movieId).exec(function(err, movie){
         if (err) {
             console.log('Error Occured', err);
-            res.status(200).send('Internal Error Occurred.');
+            res.status(200).json('Internal Error Occurred.');
         } else if(!movie){
-            res.status(404).send('Movie ID not found in the system.');
+            res.status(404).json('Movie ID not found in the system.');
         }else{
             res.status(200).json(movie);
         }
@@ -106,13 +106,13 @@ module.exports.modifyMovie = function(req, res){
     // console.log(req.body);
     // console.log(req.params);
     if(!mongoose.Types.ObjectId.isValid(movieId)){
-        res.status(200).send('Not a valid Movie ID');
+        res.status(200).json('Not a valid Movie ID');
         return;
     }
     Movie.findById(movieId).exec(function(err, movie){
         if(err){
             console.log('Failed to get a movie', err);
-            res.status(400).send('Error Occurred during modifying a movie.');
+            res.status(400).json('Error Occurred during modifying a movie.');
         }
         else{
             Object.keys(updateData).forEach(function(key){
@@ -121,7 +121,7 @@ module.exports.modifyMovie = function(req, res){
             movie.save(function(err, updatedMovie){
                 if(err){
                     console.log(err);
-                    res.status(500).send(err.message);
+                    res.status(500).json(err.message);
                 }
                 else{
                     console.log(err);
@@ -136,14 +136,14 @@ module.exports.replaceMovie = function(req, res){
     console.log('Replace Movie Request');
     const movieId = req.params.movieId;
     if(!mongoose.Types.ObjectId.isValid(movieId)){
-        res.status(200).send(movieId + ' is not a valid Movie ID');
+        res.status(200).json(movieId + ' is not a valid Movie ID');
         return;
     }
     Movie.findById(movieId).select('_id').exec(function(err, movie){
         console.log(movie);
         if(err){
             console.log(err);
-            res.status(200).send('Error getting movie data');
+            res.status(200).json('Error getting movie data');
         }
         else{
             Object.keys(req.query).forEach(function(key){
@@ -153,10 +153,10 @@ module.exports.replaceMovie = function(req, res){
             movie.save(function(err, response){
                 if(err){
                     console.log(err)
-                    res.status(200).send('Error Occurred during movie replace.');
+                    res.status(200).json('Error Occurred during movie replace.');
                 }
                 else{
-                    res.status(200).send(response)
+                    res.status(200).json(response)
                 }
             });
         }
@@ -167,17 +167,17 @@ module.exports.deleteMovie = function(req, res){
     console.log('Delete Movie Request');
     const movieId = req.params.movieId;
     if(!mongoose.Types.ObjectId.isValid(movieId)){
-        res.status(200).send(movieId + ' is not a valid Movie ID');
+        res.status(200).json(movieId + ' is not a valid Movie ID');
     }
     Movie.findByIdAndDelete(movieId, function(err, response){
         if(err){
             console.log(err);
-            res.status(200).send('Error Occurred deleting a movie');
+            res.status(200).json('Error Occurred deleting a movie');
         }else if(!response){
-            res.status(404).send('Movie ID doesn\'t exist in the System');
+            res.status(404).json('Movie ID doesn\'t exist in the System');
         } else{
             console.log(response);
-            res.status(200).send('Movie Deleted Successfully');
+            res.status(200).json('Movie Deleted Successfully');
         }
     })
 
@@ -214,7 +214,7 @@ module.exports.loadMovie = function (req, res) {
 
                         Movie.create(movieData, function (err, response) {
                             if (err) {
-                                // res.status(500).send(err.message);
+                                // res.status(500).json(err.message);
                                 console.log(err);
                             }
                             else {

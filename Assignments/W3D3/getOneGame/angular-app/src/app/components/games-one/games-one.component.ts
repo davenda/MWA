@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { GamesDataService } from 'src/app/service/games-data.service';
 import { Game } from '../games-list/games-list.component';
 
@@ -11,7 +12,7 @@ import { Game } from '../games-list/games-list.component';
 })
 
 export class GamesOneComponent implements OnInit {
-  game!: Game;
+  game: Game = new Game();
   constructor(private activatedRoute: ActivatedRoute,
     private gamesDataService: GamesDataService ) { }
 

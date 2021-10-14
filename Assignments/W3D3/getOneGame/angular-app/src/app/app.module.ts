@@ -8,6 +8,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { GamesListComponent } from './components/games-list/games-list.component';
 import { GamesOneComponent } from './components/games-one/games-one.component';
+import { RatingDirective } from './directive/rating.directive';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { GamesOneComponent } from './components/games-one/games-one.component';
     ErrorPageComponent,
     GamesListComponent,
     GamesOneComponent,
+    RatingDirective,
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { GamesListComponent } from './components/games-list/games-list.component';
+import { GamesOneComponent } from './components/games-one/games-one.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { GamesListComponent } from './components/games-list/games-list.component
     WelcomeComponent,
     ErrorPageComponent,
     GamesListComponent,
+    GamesOneComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,10 @@ import { GamesListComponent } from './components/games-list/games-list.component
       {
         path: "games",
         component: GamesListComponent,
+      },
+      {
+        path: "games/:gameId",
+        component: GamesOneComponent,
       },
       {
         path: "**",

@@ -37,8 +37,12 @@ export class GamesListComponent implements OnInit {
 }
 
 export class Game {
-  title: string = "No Game Title";
-  price: number = 0.0;
-  year: number = 2000;
-  _id: string = '';
+  title!: string;
+  price!: number;
+  year!: number;
+  _id!: string;
+  maxPlayers!: number;
+  minPlayers!: number;
+  designers!: string;
+  rate!: string;
 }

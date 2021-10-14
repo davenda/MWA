@@ -24,8 +24,8 @@ export class GamesDataService {
       .catch(this.handleError);
   }
 
-  public getOneGame(): Promise<Game>{
-    const url: string = this.apiBaseUrl + "/games/" + "5fbed15c07a5894b456a4336";
+  public getOneGame(gameId: string): Promise<Game>{
+    const url: string = this.apiBaseUrl + "/games/" + gameId;
     return this
       .httpClient
       .get(url)

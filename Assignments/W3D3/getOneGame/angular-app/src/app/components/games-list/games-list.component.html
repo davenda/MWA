@@ -1,0 +1,10 @@
+<p>games-list works!</p>
+
+<ul>
+    <li *ngFor="let game of games">
+        Title: {{game.title}}<br>
+        Price: {{game.price}}<br>
+        Year: {{game.year}}<br>
+        ID: <a routerLink= "/{{game._id}}"></a>
+    </li>
+</ul>

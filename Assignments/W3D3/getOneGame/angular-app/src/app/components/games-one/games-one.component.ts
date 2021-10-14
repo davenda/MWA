@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GamesDataService } from 'src/app/service/games-data.service';
+import { Game } from '../games-list/games-list.component';
 
 @Component({
   selector: 'app-games-one',
@@ -10,7 +11,7 @@ import { GamesDataService } from 'src/app/service/games-data.service';
 })
 
 export class GamesOneComponent implements OnInit {
-  game!: GameOne;
+  game!: Game;
   constructor(private activatedRoute: ActivatedRoute,
     private gamesDataService: GamesDataService ) { }
 
@@ -19,20 +20,20 @@ export class GamesOneComponent implements OnInit {
     this
       .gamesDataService
       .getOneGame(gameId)
-      .then(response => console.log(response));
-    
+      .then(response => this.game = response);
   }
 
 }
 
 
-export class GameOne {
-  title!: string;
-  price!: number;
-  year!: number;
-  _id!: string;
-  maxPlayers!: number;
-  minPlayers!: number;
-  designers!: string;
-  rate!: string;
-}
+// export class GameOne {
+//   title!: string;
+//   price!: number;
+//   year!: number;
+//   _id!: string;
+//   maxPlayers!: number;
+//   minPlayers!: number;
+//   minAge!: number;
+//   designers!: string;
+//   rate!: string;
+// }

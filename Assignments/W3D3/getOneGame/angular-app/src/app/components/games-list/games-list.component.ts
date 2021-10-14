@@ -30,8 +30,6 @@ export class GamesListComponent implements OnInit {
       .gamesDataService
       .getGames()
       .then(response => this.games=response);
-      
-      
   }
 
 }
@@ -41,6 +39,7 @@ export class Game {
   price!: number;
   year!: number;
   _id!: string;
+  minAge!: number;
   maxPlayers!: number;
   minPlayers!: number;
   designers!: string;

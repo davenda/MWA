@@ -1,0 +1,57 @@
+<h1>List of Games</h1>
+
+<ul>
+    <li *ngFor="let game of games">
+      <a routerLink= "/games/{{game._id}}">{{game.title}}</a> <br>
+        <!-- Title: <a routerLink= "/games/{{game._id}}">{{game.title}}</a> <br>
+        Price: {{game.price}}<br>
+        Year: {{game.year}}<br> -->
+    </li>
+</ul>
+
+<form #editGameForm=ngForm
+    (ngSubmit)="onSubmit()">
+    <div>
+       To add a game please fill in the following fields.
+    </div>
+    <div>
+        <label>
+            Game Title <input type="text" name="title" [(ngModel)]=newGame.title >
+        </label>
+    </div>
+    <div>
+        <label>
+            Price: <input type='text' name='price' [(ngModel)]=newGame.price >
+        </label>
+    </div>
+    <div>
+        <label>
+            Rating: <input type='text' name='rating' [(ngModel)]=newGame.rate >
+            <span style="color:red" ng-show="vm.gameForm.newGameRating.$dirty && vm.gameForm.newGameRating.$valid"></span>
+        </label>
+    </div>
+    <div>
+        <label>
+            Minimum Number of Players: <input type='text' name='minPlayers' [(ngModel)]=newGame.minPlayers >
+            <!-- <span ng-show = 'vm.gameForm.minPlayers.$dirty && vm.gameForm.minPlayers.$invalid && vm.gameForm.isSubmitted'>
+                Minimum number of players must be 1.
+            </span> -->        
+        </label>
+    </div>
+    <div>
+        <label>
+            Maximum Number of Players: <input type='text' name='maxPlayers' [(ngModel)]=newGame.maxPlayers >
+        </label>
+    </div>
+    <div>
+        <label>
+            Minimum Recommeded Player Age: <input type='text' name='minAge' [(ngModel)]=newGame.minAge >
+        </label>
+    </div>
+    <div>
+        <label>
+            Designer: <input type='text' name='designers' [(ngModel)]=newGame.designers >
+        </label>
+    </div>
+    <button type='submit' class=btn-success [disabled]>Add Game</button><br/>
+</form>

@@ -1,0 +1,47 @@
+<form name='vm.gameForm' ng-submit=vm.editGame()>
+    <fieldset>
+      <legend>Edit Game</legend>
+      <div>
+        To add a game please fill in the following fields.
+     </div>
+     <div>
+         <label>
+             Game Title <input type="text" name="title" required ng-model="vm.game.title" style='color:black'>
+         </label>
+     </div>
+     <div>
+         <label>
+             Price: <input type='text' name='price' required ng-model=vm.game.price> <br/>
+         </label>
+     </div>
+     <div>
+         <label>
+             Rating: <input type='text' name='rating' required ng-model=vm.game.rate>
+             <span style="color:red" ng-show="vm.gameForm.game.rate.$dirty && vm.gameForm.game.rate.$valid"></span>
+         </label>
+     </div>
+     <div>
+         <label>
+             Minimum Number of Players: <input type='text' name='minPlayers' required ng-model=vm.game.minPlayers>
+             <!-- <span ng-show = 'vm.gameForm.minPlayers.$dirty && vm.gameForm.minPlayers.$invalid && vm.gameForm.isSubmitted'>
+                 Minimum number of players must be 1.
+             </span> -->        
+         </label>
+     </div>
+     <div>
+         <label>
+             Maximum Number of Players: <input type='text' name='maxPlayers' required ng-model=vm.game.maxPlayers><br/>
+         </label>
+     </div>
+     <div>
+         <label>
+             Minimum Recommeded Player Age: <input type='text' name='minAge' required ng-model=vm.game.minAge><br/>
+         </label>
+     </div>
+     <div>
+         <label>
+             Designer: <input type='text' name='designer' required ng-model=vm.game.designers><br/>
+         </label>
+     </div>        <button type='submit' class=btn-success>Save Game</button><br/>
+    </fieldset>
+  </form>

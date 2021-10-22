@@ -43,7 +43,7 @@ function MoviesController(MovieDataFactory, $routeParams, $window, $location, $r
         }
         vm.searchMovie = function(){    
             if(vm.movieForm.$valid){
-                window.location = "#/movies?offset=0&count=5&title=" + vm.movieTitle;
+                window.location = "#!/movies?offset=0&count=5&title=" + vm.movieTitle;
             }
         }
 }

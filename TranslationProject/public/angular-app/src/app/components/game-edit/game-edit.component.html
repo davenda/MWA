@@ -1,0 +1,74 @@
+<form #editGameForm=ngForm
+    (ngSubmit)="onSave()">
+    <legend>Edit Game</legend>
+    <div>
+       To add a game please fill in the following fields.
+    </div>
+    <div>
+        <label>
+            Game Title <input type="text" name="title" [(ngModel)]=game.title >
+        </label>
+    </div>
+    <div>
+        <label>
+            Price: <input type='text' name='price' [(ngModel)]=game.price >
+        </label>
+    </div>
+    <div>
+        <label>
+            Rating: <input type='text' name='rating' [(ngModel)]=game.rate >
+            <span style="color:red" ng-show="vm.gameForm.newGameRating.$dirty && vm.gameForm.newGameRating.$valid"></span>
+        </label>
+    </div>
+    <div>
+        <label>
+            Minimum Number of Players: <input type='text' name='minPlayers' [(ngModel)]=game.minPlayers >
+            <!-- <span ng-show = 'vm.gameForm.minPlayers.$dirty && vm.gameForm.minPlayers.$invalid && vm.gameForm.isSubmitted'>
+                Minimum number of players must be 1.
+            </span> -->        
+        </label>
+    </div>
+    <div>
+        <label>
+            Maximum Number of Players: <input type='text' name='maxPlayers' [(ngModel)]=game.maxPlayers >
+        </label>
+    </div>
+    <div>
+        <label>
+            Minimum Recommeded Player Age: <input type='text' name='minAge' [(ngModel)]=game.minAge >
+        </label>
+    </div>
+    <div>
+        <label>
+            Designer: <input type='text' name='designers' [(ngModel)]=game.designers >
+        </label>
+    </div>
+    <button type='submit' class=btn-success >Save Game</button><br/>
+</form>
+
+<!-- <form action="" 
+    [formGroup] = "registrationForm" 
+    (ngSubmit)="onSubmit()">
+    <div>
+        <label for="">
+            Name: <input formControlName="name" placeholder="Your Name" type="text">
+            <span *ngIf="registrationForm.controls.name.invalid && (registrationForm.controls.name.dirty || registrationForm.controls.name.touched)">Please provide a name</span>
+        </label>
+    </div>
+    <div>
+        <label for="">
+            Username: <input formControlName="username" placeholder="Your Username" type="text">
+        </label>
+    </div>
+    <div>
+        <label for="">
+            Password: <input formControlName="password" placeholder="Your Password" type="text">
+        </label>
+    </div>
+    <div>
+        <label for="">
+            Repeat Password: <input formControlName="passwordRepeat" placeholder="Password Repeat" type="text">
+        </label>
+    </div>
+    <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+</form> -->

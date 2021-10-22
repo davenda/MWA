@@ -1,0 +1,28 @@
+<h1>Register</h1>
+<form name="register" ng-submit="vm.register()">
+  <div>
+    <label>
+      Name
+    </label>
+    <input type="text" placeholder="Your Name" ng-model="vm.name"/>
+  </div>
+  <div>
+    <label>
+      Username
+    </label>
+    <input type="text" placeholder="Your Username" ng-model="vm.username"/>
+  </div>
+  <div>
+    <label>
+      Password
+    </label>
+    <input type="password" placeholder="Your Password" ng-model="vm.password"/>
+  </div>
+  <div>
+    <label>
+      Repeat Password
+    </label>
+    <input type="password" placeholder="Repeat Password" ng-model="vm.passwordRepeat" />
+  </div>
+<button type="submit" class="btn btn-success">Register</button>
+</form>

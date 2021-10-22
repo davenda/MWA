@@ -12,7 +12,7 @@ function MovieController(MovieDataFactory, $routeParams){
         MovieDataFactory
             .deleteMovie(vm.movieDetails._id)
             .then(function(){
-              window.location = '#/movies';  
+              window.location = '#!/movies';  
             })
     }
 }

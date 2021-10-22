@@ -16,7 +16,7 @@ function MovieEditController(MovieDataFactory, $routeParams){
             MovieDataFactory
                 .modifyMovie(vm.movieDetails)
                 .then(function(response){
-                    window.location = '/#/movies/' + vm.movieDetails._id;
+                    window.location = '/#!/movies/' + vm.movieDetails._id;
                 })
                 .catch(function(err){
 

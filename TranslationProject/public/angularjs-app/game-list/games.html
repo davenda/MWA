@@ -1,0 +1,52 @@
+<h1>List of Games</h1>
+<ul>
+  <li ng-repeat='game in vm.list'>
+    <a ng-href='#/games/{{game._id}}'>{{game.title}}</a>
+  </li>
+</ul>
+<form name='vm.gameForm' ng-submit=vm.addGame()>
+    <div>
+       To add a game please fill in the following fields.
+    </div>
+    <div>
+        <label>
+            Game Title 
+        </label>
+        <input type="text" name="title" required ngModel=vm.newGame.title >
+    </div>
+    <div>
+        <label>
+            Price: <input type='text' name='price' required ngModel=vm.newGame.price >
+        </label>
+    </div>
+    <div>
+        <label>
+            Rating: <input type='text' name='rating' required ngModel=vm.newGame.rate >
+            <span style="color:red" ng-show="vm.gameForm.newGameRating.$dirty && vm.gameForm.newGameRating.$valid"></span>
+        </label>
+    </div>
+    <div>
+        <label>
+            Minimum Number of Players: <input type='text' name='minPlayers' required ngModel=vm.newGame.minPlayers >
+            <!-- <span ng-show = 'vm.gameForm.minPlayers.$dirty && vm.gameForm.minPlayers.$invalid && vm.gameForm.isSubmitted'>
+                Minimum number of players must be 1.
+            </span> -->        
+        </label>
+    </div>
+    <div>
+        <label>
+            Maximum Number of Players: <input type='text' name='maxPlayers' required ngModel=vm.newGame.maxPlayers >
+        </label>
+    </div>
+    <div>
+        <label>
+            Minimum Recommeded Player Age: <input type='text' name='minAge' required ngModel=vm.newGame.minAge >
+        </label>
+    </div>
+    <div>
+        <label>
+            Designer: <input type='text' name='designers' required ngModel=vm.newGame.designers >
+        </label>
+    </div>
+    <button type='submit' class=btn-success [disabled]>Add Game</button><br/>
+</form>

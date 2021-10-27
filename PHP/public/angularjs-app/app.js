@@ -21,11 +21,6 @@ function config($routeProvider){
             controller: 'MovieController',
             controllerAs: 'vm'
         })
-        .when('/search', {
-            templateUrl: 'angularjs-app/movie-search/movie-search.html',
-            controller: 'MovieSearch',
-            controllerAs: 'vm'
-        })
         .when('/about', {
             templateUrl: 'angularjs-app/about/about.html'
         })
